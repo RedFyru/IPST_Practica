@@ -39,8 +39,7 @@ function Convert(source: SourceData): TargetData {
     const target: TargetData = {
         id: source.user_id,
         name: source.full_name,
-        phone: source.contact.phone,
-        email: source.contact.email,
+        ...source.contact,
         location: `${source.address.city}, ${source.address.zip}`,
         status: source.is_active? 'active' : 'inactive',
     };

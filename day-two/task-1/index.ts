@@ -1,18 +1,22 @@
-function countFilledValues(data: {name: any; age: any; address: any; phone: any; email: any;
-    notes: any}){
+function countFilledValues(data: Record<string, unknown>): number {
     let sum: number = 0;
     const values = Object.values(data);
-
     values.forEach(value => {
-        if (value === null || value === undefined || value === "") {
-        } else {
+        if (value !== null && value !== undefined && value !== "") {
             sum += 1;
         }
-    })
-    console.log(sum);
+    });
+    return sum;
 }
 
-let info = {name: 'fdgdfg', age: null, address: 'John Doe', phone: '8958954123',
-    email: undefined, notes: ''};
+const data = {
+    name: "Alice",
+    age: 25,
+    address: "",
+    phone: undefined,
+    email: "[alice@example.com](<mailto:alice@example.com>)",
+    notes: null,
+};
 
-countFilledValues(info);
+const result = countFilledValues(data);
+console.log(result);
