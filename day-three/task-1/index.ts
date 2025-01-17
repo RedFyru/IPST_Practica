@@ -4,4 +4,4 @@ function asyncFunction(delay: number, message: string) {
     });
 }
 
-asyncFunction(3000, "Hello World!").then((result)=>console.log(result));
+asyncFunction(3000, "Hello World").then((result)=>console.log(result));
