@@ -1,10 +1,10 @@
-interface SourceData {
+interface ISourceData {
     title: string;
     year: string;
     author: string;
 }
 
-interface TargetData{
+interface ITargetData{
     title: string;
     year: string;
     author: string;
@@ -12,13 +12,13 @@ interface TargetData{
     url: string;
 }
 
-const source: SourceData = {
+const source: ISourceData = {
     title: "Harry Potter",
     year: "1997",
     author: "J.K. Rowling",
 };
 
-function createBook(source: SourceData): TargetData {
+function createBook(source: ISourceData): ITargetData {
     const queryParams = new URLSearchParams({
         title: source.title,
         year: source.year,

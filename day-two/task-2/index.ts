@@ -1,4 +1,4 @@
-interface SourceData {
+interface ISourceData {
     user_id: string;
     full_name: string;
     contact: {
@@ -12,7 +12,7 @@ interface SourceData {
     is_active: boolean;
     }
 
-interface TargetData {
+interface ITargetData {
     id: string;
     name: string;
     phone: string;
@@ -21,7 +21,7 @@ interface TargetData {
     status: string;
 }
 
-const source: SourceData = {
+const source: ISourceData = {
     user_id: "123",
     full_name: "John Doe",
     contact: {
@@ -35,8 +35,8 @@ const source: SourceData = {
     is_active: true,
 };
 
-function Convert(source: SourceData): TargetData {
-    const target: TargetData = {
+function convert(source: ISourceData): ITargetData {
+    const target: ITargetData = {
         id: source.user_id,
         name: source.full_name,
         ...source.contact,
@@ -46,5 +46,5 @@ function Convert(source: SourceData): TargetData {
     return target;
 }
 
-const target = Convert(source);
+const target = convert(source);
 console.log(target);
