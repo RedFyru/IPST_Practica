@@ -1,4 +1,4 @@
-interface userWithGadget {
+interface IUserWithGadget {
     id: string,
     name: string,
     gadget: {
@@ -8,7 +8,7 @@ interface userWithGadget {
     }
 }
 
-interface userWithGadgets {
+interface IUserWithGadgets {
     id: string,
     name: string,
     gadgets: {
@@ -18,7 +18,7 @@ interface userWithGadgets {
     } []
 }
 
-const input: userWithGadget[] = [
+const input: IUserWithGadget[] = [
     {
         id: "1",
         name: "Khalid Kashmiri",
@@ -36,22 +36,17 @@ const input: userWithGadget[] = [
     },
 ];
 
-function Group(data: userWithGadget[]): userWithGadgets[] {
-    const userID: {[key: string]: userWithGadgets } = {}
-    for (let i = 0; i < data.length; i++) {
-        const user = data[i];
-        if (userID[user.id]) {
-            userID[user.id].gadgets.push(user.gadget);
+function group(data: IUserWithGadget[]): IUserWithGadgets[] {
+    const userID = new Map<string, IUserWithGadgets>();
+    for (const {id, name, gadget} of data) {
+        if (userID.has(id)) {
+            userID.get(id)!.gadgets.push(gadget);
         } else {
-            userID[user.id] = {
-                id: user.id,
-                name: user.name,
-                gadgets: [user.gadget],
-            };
+            userID.set(id, {id, name, gadgets: [gadget]});
         }
     }
-    return Object.values(userID);
+    return [...userID.values()];
 }
 
-const output = Group(input)
+const output = group(input)
 console.log(JSON.stringify(output, null, 2));
