@@ -21,7 +21,7 @@ function runLengthDecoding(Encoding: string) {
         if (i % 2 == 0) {
             letters.push(EncodingStringWithOutDashes[i]);
         } else {
-            numbers.push(Number(EncodingStringWithOutDashes[i]))
+            numbers.push(Number(EncodingStringWithOutDashes[i]));
         }
     }
     for (let i = 0; i < letters.length; i++) {
