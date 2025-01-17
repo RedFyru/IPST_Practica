@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-interface FakeApi{
+interface IFakeApi{
     id: string,
     name: string,
     phone: string,
@@ -9,8 +9,8 @@ interface FakeApi{
     status: "active" | "deleted",
 }
 
-async function Fake(): Promise<FakeApi[]> {
-    const FakeData: FakeApi[] = [
+async function fake(): Promise<IFakeApi[]> {
+    const FakeData: IFakeApi[] = [
         {
             id: uuidv4(),
             name: "John Doe",
@@ -33,4 +33,4 @@ async function Fake(): Promise<FakeApi[]> {
     });
 }
 
-Fake().then(result => console.log(result));
+fake().then(result => console.log(result));

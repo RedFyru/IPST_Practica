@@ -2,7 +2,7 @@ async function request(url: string){
     try {
         const response = await fetch(url);
         if (response.ok) {
-            return await response.json();
+            return response.json();
         } else {
             return new Error(`Error ${response.status}: ${response.statusText}`);
         }
